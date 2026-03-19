@@ -1,5 +1,5 @@
 import random
-
+#Rulest: list of (keywords, respones)
 rules = [
 #greetings
 (["hello", "hi", "hey"], [
@@ -26,19 +26,14 @@ rules = [
     ]),
 
 
-([])
-
 #pets
 (["dog", "cat", "hamster", "rabbit", "bunny"], [
     "You have a pet?, how fun!, tell me more about them",
-    "Tell me something interesting about your pet!"
+    "Tell me something interesting about your pet!",
     "It must be really fun having a pet, can they do any tricks?"
     ]),
 
-#kan man lägga till en joke med djuret?
 
-
-#animals
 #"yes"
 #"no"
 
@@ -60,32 +55,45 @@ fallback = [
     "I dont have knowledge about that, tell me about something else!",
     "Sorry I dont have a answer to that in my program"
     ]
+ 
 
-while true:
+farewell_words = ["bye", "byee", "goodbye", "see you"]
 
+def run_zeta():
+    print("Hello, I am a bot named Zeta. Is there anything you want to talk about today?")
+    print("if you no longer wish to talk to me just type bye")
+    
+run_zeta()
+
+def main():
+    run_zeta()
+
+
+while True:
     user = input("You: ")
     user = user.lower()
     found = False
 
-    for keyword in responses:
-        if keyword in user:
-            random.choice(responses[keyword])
-            print("bot:", answer)
-            found = True
+    for keywords, responses in rules:
+        if any(word in user for word in keywords):
+                answer = random.choice(responses)
+                print("bot:", answer)
+                found = True
+                break
 
-            if any(word in user_input.lower() for word in farewell)
-            break
+            if found:
+                break
 
-        if not found:
-            print random.choice(fallback)
-        
-            
-    def run_zeta():
-        print("Hello, I am a bot named Zeta. Is there anything you want to talk about today?")
-        print("if you no longer wish to talk to me just type "bye":)")
 
-     farewell_words = ["bye", "byee", "goodbye", "see you"]
-        run_zeta()
+
+    if not found:
+       print("bot:", random.choice(fallback))
+
+    if any(word in user for word in farewell_words):
+       break
+
+   if __name__ == "__main__":
+    main()
 
 
 
