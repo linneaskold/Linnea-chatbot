@@ -80,9 +80,9 @@ while True:
                 print("bot:", answer)
                 found = True
                 break
-
-            if found:
-                break
+            
+        if found:
+               break
 
 
 
@@ -91,9 +91,9 @@ while True:
 
     if any(word in user for word in farewell_words):
        break
-
-   if __name__ == "__main__":
-    main()
+   
+    if __name__ == "__main__":
+       main()
 
 
 
