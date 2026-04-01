@@ -18,11 +18,26 @@ def get_time_and_date():
     now = datetime.datetime.now()
     print("Zeta:" "The current time is", now.strftime("%H:%M"), "and today's date is", now.strftime("%B %d, %Y"))
 
+def get_day():
+    days = {
+        "Monday": "Monday",
+        "Tuesday": "Tuesday",
+        "Wednesday": "Wednesday",
+        "Thursday": "Thursday",
+        "Friday": "Friday",
+        "Saturday": "Saturday",
+        "Sunday": "Sunday"
+    }
+    today = datetime.datetime.now().strftime("%A")
+    print("Zeta:" "Today is", days[today])
+    
+
 
 #denhär delen av koden är keywords som programmet kommer att leta efter i användarens input för att sen kunna svar på hur mycket klocka eller datumet.
 time_keywords = ["time", "what time", "clock"]
 date_keywords = ["date", "what date", "day"]
 time_and_date_keywords = ["time and date", "date and time", "what time and date"]
+days_keywords = ["day", "what day", "weekday"]
 
 
 
@@ -234,6 +249,10 @@ def main():
 
         elif any(kw in user_lc for kw in date_keywords):
                 get_date()
+                continue
+
+        elif any(kw in user_lc for kw in days_keywords):
+                get_day()
                 continue
 
         found = False
