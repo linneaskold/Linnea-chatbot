@@ -34,10 +34,10 @@ def get_day():
 
 
 #denhär delen av koden är keywords som programmet kommer att leta efter i användarens input för att sen kunna svar på hur mycket klocka eller datumet.
-time_keywords = ["time", "what time", "clock"]
-date_keywords = ["date", "what date", "day"]
+time_keywords = ["what time", "clock"]
+date_keywords = ["date", "what date", "todays date"]
 time_and_date_keywords = ["time and date", "date and time", "what time and date"]
-days_keywords = ["day", "what day", "weekday"]
+days_keywords = ["what day", "weekday"]
 
 
 
@@ -66,15 +66,15 @@ rules = [
 
     # happy
        (["happy", "good", "great", "fantastic", "amazing"], [
-           "and thats great to hear! What makes you feel that way?",
+           "and thats great to hear! Can you explain why you feel that way?",
            "thats wonderful! What makes you feel that way?",
-           "thats fantastic! What makes you feel that way?",
-           "thats amazing! What makes you feel that way?",
+           "thats fantastic! Being happy is a great feeling!",
+           "thats amazing! Can ypu explain what makes you feel so fantastic!",
            "thats good to hear! What makes you feel that way?"
             ]),
 
       # sad
-       (["sad", "bad", "terrible", "awful", "depressed"], [
+       (["sad", "bad", "terrible", "not happy", "awful", "depressed"], [
            "Im sorry to hear that, do you want to talk about it?",
            "That sounds tough, do you want to talk about it?",
            "I hope things get better for you, do you want to talk about it?",
@@ -87,27 +87,30 @@ rules = [
         "Why not? Is there anything else you want to talk about?",
         "If you dont want to tell me more about that tell me something else!",
         "Why not, you can tell me anything",
-        "Why not you can tell me if something is bothering you!"
+        "Why not, you can tell me if something is bothering you!",
+        "Tell me something else you like instead!",
         ]),
 
     #yes
     (["yes", "yeah", "yea", "yess", "yup", "absolutely"], [
-        "So you really are that sure huh",
-        "Its nice that you are so sure about that!",
-        "You seem really sure, are you really really sure?",
+        "So you really are that sure huh, tell me something else about it!",
+        "Its nice that you are so sure about that! Tell me why you think that",
+        "You seem really sure, are you really really sure? Tell me more!",
         "You seem very positive about being sure, tell me more!"
         ]),
 
     #other response
-    (["sure", "good", "okay"], [
+    (["sure", "okay"], [
         "Then tell me more, im really interested!",
-        "Tell me what you really think about that!"
+        "Tell me what you really think about that!",
+        "Tell me about something that you like to do!",
+        "Tell me about something fun you have done recently!"
         ]),
 
     #unsure response
     (["maybe", "perhaps"], [
         "You seem unsure, tell me more so that i can understand better!",
-        "If you feel unsure about it yoy can explain it to me so i maybe can help you!"
+        "If you feel unsure about it you can explain it to me so I maybe can help you!"
     ]),
 
     #the program
@@ -119,7 +122,7 @@ rules = [
         ]),
 
     #school
-        (["school", "homework", "class"], [
+        (["school", "homework", "teacher", "class"], [
             "How is school going for you? Do you like it?",
             "I have never been to school tell me what its like!",
             "Tell me more about school, do you have a favorite subject"
@@ -133,7 +136,7 @@ rules = [
             ]),
 
         #fun
-        (["fun", "funny", "enjoyable", "thrilling", "hilarious"], [
+        (["fun", "funny", "thrilling", "hilarious"], [
             "That sounds fun, tell me more about it!",
             "That sounds really fun, tell me more about it!",
             "That sounds hilarious, tell me more about it!",
@@ -141,8 +144,17 @@ rules = [
             "Tell me more about fun stuff like that!"
             ]),
 
+            #the word sport
+            (["sports", "sport"], [
+                "Are you interested in sport?, if so tell me your favorite sport!",
+                "Do you have any sport you like to do?",
+                "Whats your favorite sport to do on a borring day?"
+                ]),
+
+
+
          #sports
-        (["sports", "football", "soccer", "basketball", "golf", "swimming", "tennis"], [
+        (["football", "soccer", "basketball", "golf", "swimming", "tennis"], [
             "What about the sport do you like?",
             "Tell me more about sports, is there something particular you like about it?",
             "I have never played sports, tell me what its like!",
@@ -197,8 +209,64 @@ rules = [
             "Tell me about something that makes you happy instead so that we can talk about something fun!"
     ]),
 
+    #pets
+    (["pet", "pets", "dog", "cat", "hamster", "bunny"], [
+        "Tell me more about your pet, do you have a favorite pet?",
+        "Tell me something fun you did recently with your pet!",
+        "How is your pet doing? Do you have a good relationship with them?",
+        "How long have you had your pet? Do you have a favorite memory with them?",
+        "Can your pet do any tricks?",
+    ]),
+
+    #cooking
+    (["cooking", "cook", "baking", "food"], [
+        "Tell me more about cooking, do you have a favorite dish to cook?",
+        "Tell me something fun you did recently with cooking!",
+        "Whats your favorite food, tell me about it!",
+        "Do you have someone you enjoy cooking with?, if so tell me why!",
+    ]),
+
+    #enjoying things
+    (["enjoy", "enjoying", "enjoyable", "enjoyable"], [
+            "That sounds enjoyable, tell me more about it!",
+            "That sounds fun, tell me more so i can understand why you like it so much!",
+            "That sounds really fun, tell me why you like it!",
+            "That sounds lovley, tell me about something else you really enjoy!",
+    ]),
+
+    #games
+    (["game", "games", "video game", "board game"], [
+        "Tell me more about games, do you have a favorite game?",
+        "What type of genre to you like in games? Tell me about it!",
+        "What is your favorite game and what do you do in it? Tell me about it!",
+        "Tell me what you enjoy about that game!",
+        ]),
+
+  #sick
+    (["sick", "ill", "fever", "sickly", "unwell"], [
+        "Im sorry to hear that, hope you get better!",
+        "That sounds tough, I hope you get better soon!",
+        "I hope you get better soon, do you want to talk about something fun to take your mind off it?",
+        "That sounds really hard, I hope you get better soon!, now tell me something fun you are looking forward to!",
+        ]),
+
+    #weather
+    (["weather", "rain", "sun", "snow", "cloudy"], [
+        "Tell me more about the weather, do you like it?",
+        "What do you like about that weather?",
+        "Is there anything you dont like about that weather? Tell me about it!",
+    ]),
+
+    #name
+    (["my name", "i am"], [
+        "Thats a nice name, tell me more about you!",
+        "I like your name, tell me about something you like to do!",
+        "Thats a nice name, tell me about something fun you have done recently!",
+        "Thats a lovely name, tell me about something you are looking forward to!",
+        ]),
 
   
+ 
 
 
 
@@ -213,7 +281,8 @@ fallback = [
     "Tell me more about something you like!",
     "I dont really understand you, explain more so that I can understand!",
     "I dont have knowledge about that, tell me about something else!",
-    "Sorry I dont have a answer to that in my program"
+    "Tell me about how you are feeling instead!",
+    "Sorry I dont have a answer to that in my program, tell me something else!"
 ]
 
 #Här är farewell words som programmet letar efter för att veta när programmet ska avsluta konversationen.
